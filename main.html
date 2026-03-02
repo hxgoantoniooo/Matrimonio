@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrimonio Celine & Diego</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables */
+        :root {
+            --bg-color: #f8f7f4;
+            --text-main: #6b6b6b;
+            --text-accent: #c8a97e;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-text: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-text);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden; /* Importante para que la foto full-width no cree scroll horizontal */
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            font-weight: 400;
+            margin: 0;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* Flores decorativas */
+        .flor-decorativa {
+            width: 140px;
+            opacity: 0.8;
+            filter: invert(75%) sepia(21%) saturate(836%) hue-rotate(352deg) brightness(88%) contrast(85%);
+            margin: 0;
+        }
+
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(200, 169, 126, 0.3);
+        }
+
+        /* Hero Section */
+        .hero { padding-top: 100px; }
+        .hero h3 { font-size: 1.1rem; letter-spacing: 4px; color: var(--text-accent); text-transform: uppercase; margin-bottom: 30px; }
+        .names-wrapper { display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px; }
+        .hero h1 { font-size: 4.5rem; line-height: 1.1; color: var(--text-main); margin-bottom: 0; }
+        .hero .ampersand { color: var(--text-accent); font-style: italic; }
+        .flor-left { transform: scaleX(-1) rotate(15deg); }
+        .flor-right { transform: rotate(-15deg); }
+
+        /* Contador */
+        .countdown { display: flex; justify-content: center; gap: 40px; font-family: var(--font-title); margin-top: 30px;}
+        .time-box { display: flex; flex-direction: column; }
+        .time-box span.number { font-size: 3rem; color: var(--text-main); }
+        .time-box span.label { font-size: 1rem; color: var(--text-accent); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- NUEVOS ESTILOS PARA LA FOTO FULL-WIDTH (Rompiendo el container) --- */
+        .photo-banner-section {
+            padding: 0; /* Quitamos padding para que la foto llegue a los bordes */
+            border: none;
+            width: 100vw; /* Ancho completo de la ventana */
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            height: 450px; /* ALTURA FIJA: Aquí defines qué tan ancho quieres el banner horizontal */
+            overflow: hidden;
+            border-top: 1px solid rgba(200, 169, 126, 0.3);
+            border-bottom: 1px solid rgba(200, 169, 126, 0.3);
+        }
+
+        .photo-banner-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* MAGIA: Corta la foto vertical para que llene el banner horizontal sin deformarse */
+            
+            /* object-position: Define qué parte de la foto vertical se muestra.
+               'center' muestra el medio. Si los novios están arriba, usa 'center 20%'.
+               Si están abajo, usa 'center 80%'. Ve ajustando el % según tu foto. */
+            object-position: center 13%; 
+        }
+
+        /* Detalles, Lugar, etc. */
+        .details h2 { font-size: 3rem; color: var(--text-accent); margin-bottom: 20px; }
+        .details p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: transparent; color: var(--text-main); border: 1px solid var(--text-main); text-decoration: none; font-family: var(--font-text); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; margin-top: 20px; }
+        .btn:hover { background-color: var(--text-main); color: var(--bg-color); }
+
+        /* =========================================
+           ADAPTACIÓN PARA CELULARES (MOBILE RESPONSIVE)
+           ========================================= */
+        @media (max-width: 768px) {
+            
+            /* 1. Achicamos el tamaño del título principal */
+            .hero h1 {
+                font-size: 2.8rem; 
+            }
+
+            /* 2. Reducimos el espacio entre las flores y los nombres */
+            .names-wrapper {
+                gap: 15px; 
+            }
+
+            /* 3. Hacemos las flores mucho más pequeñas para que quepan */
+            .flor-decorativa {
+                width: 65px; 
+            }
+
+            /* 4. Ajustes extra para que todo el sitio se vea mejor en celular */
+            .hero h3 {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+            
+            .countdown {
+                gap: 20px; /* Menos espacio entre los números del contador */
+            }
+
+            .time-box span.number {
+                font-size: 2rem; /* Números del contador más chicos */
+            }
+
+            .details h2 {
+                font-size: 2.2rem; /* Subtítulos un poco más pequeños */
+            }
+
+            .photo-banner-section {
+                height: 300px; /* Que la franja de la foto no sea tan alta en el celular */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <section class="hero">
+            <h3>Junto a sus familias</h3>
+            <div class="names-wrapper">
+                <img src="tl (3).webp" alt="Decoración Izquierda" class="flor-decorativa flor-left">
+                <h1>CELINE <br><span class="ampersand">&</span><br> DIEGO</h1>
+                <img src="tl (2).webp" alt="Decoración Derecha" class="flor-decorativa flor-right">
+            </div>
+            <p style="font-size: 1.2rem; margin-top: 20px; letter-spacing: 1px;">XX . 10 . 2026</p>
+        </section>
+
+        <section class="details">
+            <h2>Faltan</h2>
+            <div class="countdown" id="countdown">
+                <div class="time-box"><span class="number" id="days">00</span><span class="label">Días</span></div>
+                <div class="time-box"><span class="number" id="hours">00</span><span class="label">Hrs</span></div>
+                <div class="time-box"><span class="number" id="minutes">00</span><span class="label">Min</span></div>
+                <div class="time-box"><span class="number" id="seconds">00</span><span class="label">Seg</span></div>
+            </div>
+        </section>
+
+    </div><div class="photo-banner-section">
+        <img src="foto.jpeg" alt="Celine y Diego">
+    </div>
+
+    <div class="container"> <section class="details">
+            <h2>La Celebración</h2>
+            <p><strong>Ceremonia y Fiesta</strong></p>
+            <p>Sábado, XX de Octubre de 2026 a las 18:00 hrs.</p>
+            <p>Centro de Eventos "El Lugar Ideal"</p>
+            <p>Dirección de ejemplo #1234, Ciudad.</p>
+            <a href="#" class="btn">Ver en Google Maps</a>
+        </section>
+
+        <section class="details">
+            <h2>Detalles</h2>
+            <p><strong>Dress Code</strong></p>
+            <p>Formal / Elegante</p>
+            <br>
+            <p><strong>Lista de Regalos</strong></p>
+            <p>Nuestro mejor regalo es tu presencia. <br>Si deseas hacernos un presente, te dejamos nuestros datos:</p>
+            <a href="#" class="btn">Ver Datos Bancarios</a>
+        </section>
+
+        <section class="details" style="border-bottom: none;">
+            <h2>Asistencia</h2>
+            <p>Por favor, confirma tu asistencia antes del XX de Septiembre.</p>
+            <a href="#" class="btn" style="background-color: var(--text-accent); color: white; border: none;">Confirmar Asistencia</a>
+        </section>
+
+    </div>
+
+    <script>
+        const countToDate = new Date("Oct 10, 2026 18:00:00").getTime();
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countToDate - now;
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<p>¡Llegó el gran día!</p>";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
