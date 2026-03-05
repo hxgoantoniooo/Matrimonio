@@ -24,7 +24,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
-            overflow-x: hidden; /* Importante para que la foto full-width no cree scroll horizontal */
+            overflow-x: hidden; 
         }
 
         h1, h2, h3 {
@@ -33,14 +33,13 @@
             margin: 0;
         }
 
-        /* Contenedor principal */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 50px 20px;
         }
 
-        /* Flores decorativas */
+        /* Flores decorativas principales (Hero) */
         .flor-decorativa {
             width: 140px;
             opacity: 0.8;
@@ -48,37 +47,55 @@
             margin: 0;
         }
 
+        /* --- NUEVO: ESTILOS PARA LAS FLORES DE FONDO (MARCAS DE AGUA) --- */
+        .section-relative {
+            position: relative;
+            overflow: hidden; /* Evita que las flores se salgan de la sección */
+        }
+        
+        .bg-flower {
+            position: absolute;
+            width: 300px; /* Tamaño grande para PC */
+            opacity: 0.12; /* Muy sutil, como marca de agua */
+            z-index: -1; /* Se van al fondo, detrás del texto */
+            pointer-events: none; /* Evita que bloqueen el click en los botones */
+            filter: invert(75%) sepia(21%) saturate(836%) hue-rotate(352deg) brightness(88%) contrast(85%);
+        }
+
+        /* Posiciones específicas basadas en los dibujos de tu amiga */
+        .cel-top-left { top: -50px; left: -50px; transform: rotate(45deg); }
+        .cel-bottom-right { bottom: -50px; right: -50px; transform: scaleX(-1) rotate(45deg); }
+        
+        .det-top-left { top: 10%; left: -80px; transform: rotate(15deg); }
+        .det-bottom-right { bottom: -30px; right: -60px; transform: rotate(-150deg); }
+
         section {
             padding: 80px 0;
             border-bottom: 1px solid rgba(200, 169, 126, 0.3);
         }
 
-        /* Hero Section */
         .hero { padding-top: 100px; }
-        .hero h3 { font-size: 1.1rem; letter-spacing: 4px; color: var(--text-accent); text-transform: uppercase; margin-bottom: 30px; }
         .names-wrapper { display: flex; align-items: center; justify-content: center; gap: 40px; margin-bottom: 40px; }
         .hero h1 { font-size: 4.5rem; line-height: 1.1; color: var(--text-main); margin-bottom: 0; }
         .hero .ampersand { color: var(--text-accent); font-style: italic; }
         .flor-left { transform: scaleX(-1) rotate(15deg); }
         .flor-right { transform: rotate(-15deg); }
 
-        /* Contador */
         .countdown { display: flex; justify-content: center; gap: 40px; font-family: var(--font-title); margin-top: 30px;}
         .time-box { display: flex; flex-direction: column; }
         .time-box span.number { font-size: 3rem; color: var(--text-main); }
         .time-box span.label { font-size: 1rem; color: var(--text-accent); letter-spacing: 2px; text-transform: uppercase; }
 
-        /* --- NUEVOS ESTILOS PARA LA FOTO FULL-WIDTH (Rompiendo el container) --- */
         .photo-banner-section {
-            padding: 0; /* Quitamos padding para que la foto llegue a los bordes */
+            padding: 0; 
             border: none;
-            width: 100vw; /* Ancho completo de la ventana */
+            width: 100vw; 
             position: relative;
             left: 50%;
             right: 50%;
             margin-left: -50vw;
             margin-right: -50vw;
-            height: 450px; /* ALTURA FIJA: Aquí defines qué tan ancho quieres el banner horizontal */
+            height: 450px; 
             overflow: hidden;
             border-top: 1px solid rgba(200, 169, 126, 0.3);
             border-bottom: 1px solid rgba(200, 169, 126, 0.3);
@@ -87,61 +104,36 @@
         .photo-banner-section img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* MAGIA: Corta la foto vertical para que llene el banner horizontal sin deformarse */
-            
-            /* object-position: Define qué parte de la foto vertical se muestra.
-               'center' muestra el medio. Si los novios están arriba, usa 'center 20%'.
-               Si están abajo, usa 'center 80%'. Ve ajustando el % según tu foto. */
-            object-position: center 13%; 
+            object-fit: cover; 
+            object-position: center 13%; /* Se mantiene tu ajuste del 13% para la primera foto */
         }
 
-        /* Detalles, Lugar, etc. */
+        /* Específico para la segunda foto para que la ajustes independiente */
+        .foto-2 {
+            object-position: center 40%; /* Ajusta este porcentaje según la segunda foto */
+        }
+
         .details h2 { font-size: 3rem; color: var(--text-accent); margin-bottom: 20px; }
         .details p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
-        .btn { display: inline-block; padding: 15px 40px; background-color: transparent; color: var(--text-main); border: 1px solid var(--text-main); text-decoration: none; font-family: var(--font-text); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; margin-top: 20px; }
+        .btn { display: inline-block; padding: 15px 40px; background-color: transparent; color: var(--text-main); border: 1px solid var(--text-main); text-decoration: none; font-family: var(--font-text); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; margin-top: 20px; position: relative; z-index: 10; }
         .btn:hover { background-color: var(--text-main); color: var(--bg-color); }
 
         /* =========================================
-           ADAPTACIÓN PARA CELULARES (MOBILE RESPONSIVE)
+           ADAPTACIÓN PARA CELULARES
            ========================================= */
         @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .names-wrapper { gap: 15px; }
+            .flor-decorativa { width: 65px; }
             
-            /* 1. Achicamos el tamaño del título principal */
-            .hero h1 {
-                font-size: 2.8rem; 
-            }
-
-            /* 2. Reducimos el espacio entre las flores y los nombres */
-            .names-wrapper {
-                gap: 15px; 
-            }
-
-            /* 3. Hacemos las flores mucho más pequeñas para que quepan */
-            .flor-decorativa {
-                width: 65px; 
-            }
-
-            /* 4. Ajustes extra para que todo el sitio se vea mejor en celular */
-            .hero h3 {
-                font-size: 0.9rem;
-                letter-spacing: 2px;
-            }
+            .countdown { gap: 20px; }
+            .time-box span.number { font-size: 2rem; }
+            .details h2 { font-size: 2.2rem; }
+            .photo-banner-section { height: 300px; }
             
-            .countdown {
-                gap: 20px; /* Menos espacio entre los números del contador */
-            }
-
-            .time-box span.number {
-                font-size: 2rem; /* Números del contador más chicos */
-            }
-
-            .details h2 {
-                font-size: 2.2rem; /* Subtítulos un poco más pequeños */
-            }
-
-            .photo-banner-section {
-                height: 300px; /* Que la franja de la foto no sea tan alta en el celular */
-            }
+            /* Achicamos las flores de fondo en el celular para que no saturen la pantalla */
+            .bg-flower { width: 180px; opacity: 0.08; } 
+            .det-top-left { left: -40px; top: 5%; }
         }
     </style>
 </head>
@@ -150,7 +142,6 @@
     <div class="container">
         
         <section class="hero">
-            <h3>Junto a sus familias</h3>
             <div class="names-wrapper">
                 <img src="tl (3).webp" alt="Decoración Izquierda" class="flor-decorativa flor-left">
                 <h1>CELINE <br><span class="ampersand">&</span><br> DIEGO</h1>
@@ -169,11 +160,18 @@
             </div>
         </section>
 
-    </div><div class="photo-banner-section">
+    </div>
+    
+    <div class="photo-banner-section">
         <img src="foto.jpeg" alt="Celine y Diego">
     </div>
 
-    <div class="container"> <section class="details">
+    <div class="container"> 
+        
+        <section class="details section-relative">
+            <img src="tl (3).webp" class="bg-flower cel-top-left" alt="">
+            <img src="tl (2).webp" class="bg-flower cel-bottom-right" alt="">
+            
             <h2>La Celebración</h2>
             <p><strong>Ceremonia y Fiesta</strong></p>
             <p>Sábado, XX de Octubre de 2026 a las 18:00 hrs.</p>
@@ -182,7 +180,10 @@
             <a href="#" class="btn">Ver en Google Maps</a>
         </section>
 
-        <section class="details">
+        <section class="details section-relative">
+            <img src="tl (2).webp" class="bg-flower det-top-left" alt="">
+            <img src="tl (3).webp" class="bg-flower det-bottom-right" alt="">
+
             <h2>Detalles</h2>
             <p><strong>Dress Code</strong></p>
             <p>Formal / Elegante</p>
@@ -192,6 +193,13 @@
             <a href="#" class="btn">Ver Datos Bancarios</a>
         </section>
 
+    </div>
+
+    <div class="photo-banner-section">
+        <img src="foto2.jpeg" class="foto-2" alt="Celine y Diego 2">
+    </div>
+
+    <div class="container">
         <section class="details" style="border-bottom: none;">
             <h2>Asistencia</h2>
             <p>Por favor, confirma tu asistencia antes del XX de Septiembre.</p>
