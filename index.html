@@ -47,25 +47,24 @@
             margin: 0;
         }
 
-        /* --- NUEVO: ESTILOS PARA LAS FLORES DE FONDO (MARCAS DE AGUA) --- */
+        /* --- ESTILOS PARA LAS FLORES DE FONDO (MARCAS DE AGUA) --- */
         .section-relative {
             position: relative;
-            overflow: hidden; /* Evita que las flores se salgan de la sección */
+            overflow: hidden; 
         }
         
         .bg-flower {
             position: absolute;
-            width: 300px; /* Tamaño grande para PC */
-            opacity: 0.12; /* Muy sutil, como marca de agua */
-            z-index: -1; /* Se van al fondo, detrás del texto */
-            pointer-events: none; /* Evita que bloqueen el click en los botones */
+            width: 300px; 
+            opacity: 0.3; /* Ajustado al 0.3 como pediste */
+            z-index: -1; 
+            pointer-events: none; 
             filter: invert(75%) sepia(21%) saturate(836%) hue-rotate(352deg) brightness(88%) contrast(85%);
         }
 
-        /* Posiciones específicas basadas en los dibujos de tu amiga */
+        /* Posiciones de las flores de fondo */
         .cel-top-left { top: -50px; left: -50px; transform: rotate(45deg); }
         .cel-bottom-right { bottom: -50px; right: -50px; transform: scaleX(-1) rotate(45deg); }
-        
         .det-top-left { top: 10%; left: -80px; transform: rotate(15deg); }
         .det-bottom-right { bottom: -30px; right: -60px; transform: rotate(-150deg); }
 
@@ -105,18 +104,77 @@
             width: 100%;
             height: 100%;
             object-fit: cover; 
-            object-position: center 13%; /* Se mantiene tu ajuste del 13% para la primera foto */
+            object-position: center 13%; 
         }
 
-        /* Específico para la segunda foto para que la ajustes independiente */
         .foto-2 {
-            object-position: center 40%; /* Ajusta este porcentaje según la segunda foto */
+            object-position: center 40%; 
         }
 
         .details h2 { font-size: 3rem; color: var(--text-accent); margin-bottom: 20px; }
         .details p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 10px; }
-        .btn { display: inline-block; padding: 15px 40px; background-color: transparent; color: var(--text-main); border: 1px solid var(--text-main); text-decoration: none; font-family: var(--font-text); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; margin-top: 20px; position: relative; z-index: 10; }
+        
+        .btn { display: inline-block; padding: 15px 40px; background-color: transparent; color: var(--text-main); border: 1px solid var(--text-main); text-decoration: none; font-family: var(--font-text); font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; transition: all 0.3s ease; margin-top: 20px; position: relative; z-index: 10; cursor: pointer;}
         .btn:hover { background-color: var(--text-main); color: var(--bg-color); }
+
+        /* --- ESTILOS DEL RECUADRO (MODAL) --- */
+        .modal-fondo {
+            display: none; 
+            position: fixed;
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-contenido {
+            background-color: var(--bg-color);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 85%;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            border: 1px solid var(--text-accent);
+            text-align: center;
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: var(--text-main);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cerrar-modal:hover { color: var(--text-accent); }
+
+        .disclaimer-ninos {
+            background-color: rgba(200, 169, 126, 0.15);
+            padding: 15px;
+            border-left: 4px solid var(--text-accent);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: left;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366; 
+            color: white !important;
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
+            font-weight: bold;
+            display: block;
+        }
+        .btn-whatsapp:hover { background-color: #1ebd5c; }
 
         /* =========================================
            ADAPTACIÓN PARA CELULARES
@@ -131,9 +189,11 @@
             .details h2 { font-size: 2.2rem; }
             .photo-banner-section { height: 300px; }
             
-            /* Achicamos las flores de fondo en el celular para que no saturen la pantalla */
-            .bg-flower { width: 180px; opacity: 0.08; } 
+            /* Flores de fondo en celular (Ajustadas a 0.2 para que no saturen tanto la pantalla chica) */
+            .bg-flower { width: 180px; opacity: 0.2; } 
             .det-top-left { left: -40px; top: 5%; }
+            
+            .modal-contenido { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -203,12 +263,26 @@
         <section class="details" style="border-bottom: none;">
             <h2>Asistencia</h2>
             <p>Por favor, confirma tu asistencia antes del XX de Septiembre.</p>
-            <a href="#" class="btn" style="background-color: var(--text-accent); color: white; border: none;">Confirmar Asistencia</a>
+            <a class="btn" style="background-color: var(--text-accent); color: white; border: none;" onclick="abrirModal()">Confirmar Asistencia</a>
         </section>
+    </div>
 
+    <div id="modalAsistencia" class="modal-fondo">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+            <h3 style="font-family: var(--font-title); color: var(--text-accent); font-size: 2rem; margin-bottom: 10px;">¡Qué emoción!</h3>
+            <p style="margin-bottom: 15px;">Antes de ir a WhatsApp, te pedimos un pequeño favor:</p>
+            
+            <div class="disclaimer-ninos">
+                <strong>Nota Importante:</strong> Por temas de organización, por favor indícanos en tu mensaje si asistirás con niños y cuántos son. ¡Gracias!
+            </div>
+
+            <a href="https://wa.me/56953239450?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20matrimonio.%20" target="_blank" class="btn btn-whatsapp">Ir a WhatsApp</a>
+        </div>
     </div>
 
     <script>
+        // --- CUENTA REGRESIVA ---
         const countToDate = new Date("Oct 10, 2026 18:00:00").getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -217,15 +291,34 @@
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
             document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
             document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
             document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
             document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+            
             if (distance < 0) {
                 clearInterval(x);
                 document.getElementById("countdown").innerHTML = "<p>¡Llegó el gran día!</p>";
             }
         }, 1000);
+
+        // --- LÓGICA DEL RECUADRO (MODAL) ---
+        const modal = document.getElementById("modalAsistencia");
+
+        function abrirModal() {
+            modal.style.display = "flex";
+        }
+
+        function cerrarModal() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
     </script>
 
 </body>
