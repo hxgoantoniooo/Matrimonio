@@ -104,11 +104,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover; 
-            object-position: center 13%; 
+            object-position: center 52%; 
         }
 
         .foto-2 {
-            object-position: center 40%; 
+            object-position: center 0%; 
         }
 
         .details h2 { font-size: 3rem; color: var(--text-accent); margin-bottom: 20px; }
@@ -176,6 +176,35 @@
         }
         .btn-whatsapp:hover { background-color: #1ebd5c; }
 
+        .copy-btn {
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    font-family: var(--font-text);
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+.copy-btn:hover { background-color: var(--text-main); color: var(--bg-color); }
+.copy-btn.copied { background-color: var(--text-accent); border-color: var(--text-accent); color: white; }
+
+.bank-cards { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+.bank-card {
+    border: 1px solid rgba(200, 169, 126, 0.4);
+    padding: 30px 25px;
+    min-width: 220px;
+    flex: 1;
+    max-width: 280px;
+    text-align: center;
+}
+.bank-card .card-name { font-family: var(--font-title); font-size: 1.6rem; color: var(--text-accent); margin-bottom: 15px; }
+.bank-card .card-row { font-size: 0.88rem; line-height: 2; }
+.bank-card .card-row span { display: block; color: var(--text-accent); font-size: 0.72rem; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
+
         /* =========================================
            ADAPTACIÓN PARA CELULARES
            ========================================= */
@@ -207,7 +236,7 @@
                 <h1>CELINE <br><span class="ampersand">&</span><br> DIEGO</h1>
                 <img src="tl (2).webp" alt="Decoración Derecha" class="flor-decorativa flor-right">
             </div>
-            <p style="font-size: 1.2rem; margin-top: 20px; letter-spacing: 1px;">XX . 10 . 2026</p>
+            <p style="font-size: 1.2rem; margin-top: 20px; letter-spacing: 1px;">16 . 10 . 2026</p>
         </section>
 
         <section class="details">
@@ -234,7 +263,7 @@
             
             <h2>La Celebración</h2>
             <p><strong>Ceremonia y Fiesta</strong></p>
-            <p>Sábado, XX de Octubre de 2026 a las 18:00 hrs.</p>
+            <p>Viernes, 16 de Octubre de 2026 a las 16:00 hrs.</p>
             <p>Centro de Eventos "El Lugar Ideal"</p>
             <p>Dirección de ejemplo #1234, Ciudad.</p>
             <a href="#" class="btn">Ver en Google Maps</a>
@@ -246,11 +275,111 @@
 
             <h2>Detalles</h2>
             <p><strong>Dress Code</strong></p>
-            <p>Formal / Elegante</p>
+<p>Formal · Elegante</p>
+<p style="font-size: 0.9rem; margin-top: 5px;">Por favor, evita estos colores:</p>
+
+<div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin: 10px 0 5px;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#FFFFFF; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Blanco</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#FFFDD0; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Crema</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#F7E7CE; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Champán</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#FFD1DC; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Pastel rosa</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#C8E6FA; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Pastel azul</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#D8F0D8; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Pastel verde</span>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px;">
+    <div style="width:36px; height:36px; border-radius:50%; background:#EDE0F5; border:1px solid rgba(0,0,0,0.12); position:relative;">
+      <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) rotate(-45deg); width:80%; height:2px; background:rgba(180,0,0,0.6); border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px; color:#9a9a9a; text-align:center; max-width:50px; line-height:1.3;">Pastel lila</span>
+  </div>
+
+</div>
+<p style="font-size: 0.8rem; color: #b0a090; font-style: italic; margin-top: 5px;">Aplica para todos los invitados sin excepción ✨</p>
             <br>
             <p><strong>Lista de Regalos</strong></p>
-            <p>Nuestro mejor regalo es tu presencia. <br>Si deseas hacernos un presente, te dejamos nuestros datos:</p>
-            <a href="#" class="btn">Ver Datos Bancarios</a>
+<p>Nuestro mejor regalo es tu presencia. <br>Si deseas hacernos un presente, te dejamos nuestros datos:</p>
+
+<div class="bank-cards">
+
+    <div class="bank-card">
+        <div class="card-name">Celine</div>
+        <div class="card-row">
+            <span>Banco</span>
+            Banco Estado
+        </div>
+        <div class="card-row">
+            <span>Tipo de cuenta</span>
+            CuentaRUT
+        </div>
+        <div class="card-row">
+            <span>N° de cuenta</span>
+            21615090
+        </div>
+        <div class="card-row">
+            <span>RUT</span>
+            21.615.090-2
+        </div>
+        <button class="copy-btn" onclick="copiarDatos('celine', this)">Copiar datos</button>
+    </div>
+
+    <div class="bank-card">
+        <div class="card-name">Diego</div>
+        <div class="card-row">
+            <span>Banco</span>
+            Banco Estado
+        </div>
+        <div class="card-row">
+            <span>Tipo de cuenta</span>
+            CuentaRUT
+        </div>
+        <div class="card-row">
+            <span>N° de cuenta</span>
+            20666596
+        </div>
+        <div class="card-row">
+            <span>RUT</span>
+            20.666.596-3
+        </div>
+        <button class="copy-btn" onclick="copiarDatos('diego', this)">Copiar datos</button>
+    </div>
+
+</div>
         </section>
 
     </div>
@@ -262,15 +391,16 @@
     <div class="container">
         <section class="details" style="border-bottom: none;">
             <h2>Asistencia</h2>
-            <p>Por favor, confirma tu asistencia antes del XX de Septiembre.</p>
+            <p>Por favor, confirma tu asistencia antes del 1 de Septiembre.</p>
             <a class="btn" style="background-color: var(--text-accent); color: white; border: none;" onclick="abrirModal()">Confirmar Asistencia</a>
         </section>
     </div>
 
     <div id="modalAsistencia" class="modal-fondo">
-        <div class="modal-contenido">
-            <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
-            <h3 style="font-family: var(--font-title); color: var(--text-accent); font-size: 2rem; margin-bottom: 10px;">¡Qué emoción!</h3>
+<div class="modal-contenido">
+    <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+    <img src="foto3.png" alt="" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 20px; object-position: center 70%;">
+    <h3 style="font-family: var(--font-title); color: var(--text-accent); font-size: 2rem; margin-bottom: 10px;">¡Qué emoción!</h3>
             <p style="margin-bottom: 15px;">Antes de ir a WhatsApp, te pedimos un pequeño favor:</p>
             
             <div class="disclaimer-ninos">
@@ -283,7 +413,7 @@
 
     <script>
         // --- CUENTA REGRESIVA ---
-        const countToDate = new Date("Oct 10, 2026 18:00:00").getTime();
+        const countToDate = new Date("Oct 16, 2026 16:00:00").getTime();
         const x = setInterval(function() {
             const now = new Date().getTime();
             const distance = countToDate - now;
@@ -319,6 +449,36 @@
                 cerrarModal();
             }
         }
+
+        const datosBancarios = {
+    celine: {
+        nombre: "CELINE MONTSERRAT CESPEDES CARRASCO",
+        rut: "21.615.090-2",
+        banco: "Banco Estado",
+        tipo: "CuentaRUT",
+        cuenta: "21615090",
+    },
+    diego: {
+        nombre: "DIEGO ANDRES LAGOS DIAZ",
+        rut: "20.666.596-3",
+        banco: "Banco Estado",
+        tipo: "CuentaRUT",
+        cuenta: "20666596"
+    }
+};
+
+function copiarDatos(persona, btn) {
+    const d = datosBancarios[persona];
+    const texto = `${d.nombre}\n${d.rut}\n${d.banco}\n${d.tipo}\n${d.cuenta}`;
+    navigator.clipboard.writeText(texto).then(() => {
+        btn.textContent = "¡Copiado!";
+        btn.classList.add("copied");
+        setTimeout(() => {
+            btn.textContent = "Copiar datos";
+            btn.classList.remove("copied");
+        }, 2500);
+    });
+}
     </script>
 
 </body>
