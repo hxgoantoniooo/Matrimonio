@@ -490,15 +490,13 @@ function copiarDatos(persona, btn) {
 }
     function irAWhatsapp() {
     const whatsappUrl = "https://wa.me/56953239450?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20matrimonio.%20";
-    
-    // Cierra el primer modal y abre el de gracias
+
     cerrarModal();
     document.getElementById("modalGracias").style.display = "flex";
 
-    // Espera 2.5 segundos y redirige a WhatsApp
     setTimeout(function() {
         document.getElementById("modalGracias").style.display = "none";
-        window.open(whatsappUrl, "_blank");
+        window.location.href = whatsappUrl;
     }, 3500);
 }
     </script>
