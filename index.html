@@ -264,9 +264,9 @@
             <h2>La Celebración</h2>
             <p><strong>Ceremonia y Fiesta</strong></p>
             <p>Viernes, 16 de Octubre de 2026 a las 16:00 hrs.</p>
-            <p>Centro de Eventos "El Lugar Ideal"</p>
-            <p>Dirección de ejemplo #1234, Ciudad.</p>
-            <a href="#" class="btn">Ver en Google Maps</a>
+            <p>Piscina "A la vuelta"</p>
+            <p>El Toco 348, Pichidegua, O'Higgins</p>
+            <a href="https://maps.app.goo.gl/wzJQFnxecFUZU5gM6" class="btn">Ver en Google Maps</a>
         </section>
 
         <section class="details section-relative">
@@ -407,9 +407,18 @@
                 <strong>Nota Importante:</strong> Por temas de organización, por favor indícanos en tu mensaje si asistirás con niños y cuántos son. ¡Gracias!
             </div>
 
-            <a href="https://wa.me/56953239450?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20matrimonio.%20" target="_blank" class="btn btn-whatsapp">Ir a WhatsApp</a>
+            <button class="btn btn-whatsapp" onclick="irAWhatsapp()">Ir a WhatsApp</button>
         </div>
     </div>
+
+    <div id="modalGracias" class="modal-fondo">
+    <div class="modal-contenido" style="max-width: 360px;">
+        <img src="TUGIF.gif" alt="" style="width: 100%; border-radius: 6px; margin-bottom: 20px;">
+        <h3 style="font-family: var(--font-title); color: var(--text-accent); font-size: 2rem; margin-bottom: 10px;">¡Gracias!</h3>
+        <p style="margin-bottom: 5px;">Qué alegría contar contigo. 🤍</p>
+        <p style="font-size: 0.85rem; color: #b0a090;">Redirigiendo a WhatsApp...</p>
+    </div>
+</div>
 
     <script>
         // --- CUENTA REGRESIVA ---
@@ -478,6 +487,19 @@ function copiarDatos(persona, btn) {
             btn.classList.remove("copied");
         }, 2500);
     });
+}
+    function irAWhatsapp() {
+    const whatsappUrl = "https://wa.me/56953239450?text=¡Hola!%20Confirmo%20mi%20asistencia%20al%20matrimonio.%20";
+    
+    // Cierra el primer modal y abre el de gracias
+    cerrarModal();
+    document.getElementById("modalGracias").style.display = "flex";
+
+    // Espera 2.5 segundos y redirige a WhatsApp
+    setTimeout(function() {
+        document.getElementById("modalGracias").style.display = "none";
+        window.open(whatsappUrl, "_blank");
+    }, 3500);
 }
     </script>
 
